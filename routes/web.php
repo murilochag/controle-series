@@ -6,6 +6,7 @@ use App\Http\Controllers\SeasonsController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\Autenticador;
+use App\Mail\SeriesCreated;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,4 +40,8 @@ Route::middleware(Autenticador::class)->group(function () {
     Route::get('/', function () {
         return redirect('/series');
     });
+});
+
+Route::get('/email', function () {
+    return new SeriesCreated('Ahsoka', 1,3,8);
 });
